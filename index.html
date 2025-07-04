@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анкета: Потребности в ИИ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(120deg, #fffde4 0%, #f8fafc 100%);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fffbe7;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(60, 72, 100, 0.12);
+      padding: 32px 28px 24px 28px;
+      border: 2px solid #ffd600;
+      position: relative;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .logo-text {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #ffd600;
+      background: #111;
+      border-radius: 12px;
+      padding: 8px 32px 8px 32px;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .robot-photos {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .robot-photos img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 2px solid #ffd600;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+    }
+    label {
+      font-weight: 500;
+      margin-bottom: 6px;
+      display: block;
+      color: #111;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1.5px solid #ffd600;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #fffde4;
+      transition: border 0.2s;
+      color: #111;
+    }
+    input:focus, select:focus, textarea:focus {
+      border: 2px solid #111;
+      outline: none;
+    }
+    .checkbox-group, .radio-group {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .checkbox-group label, .radio-group label {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      margin-bottom: 0;
+      cursor: pointer;
+      padding: 6px 0 6px 0;
+      position: relative;
+    }
+    .checkbox-group label:not(:last-child), .radio-group label:not(:last-child) {
+      border-bottom: 1px solid #ffe066;
+    }
+    .checkbox-group input[type="checkbox"], .radio-group input[type="radio"] {
+      margin-right: 12px;
+      accent-color: #ffd600;
+      width: 18px;
+      height: 18px;
+    }
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      color: #111;
+      margin-bottom: 4px;
+    }
+    .slider-value {
+      font-weight: 600;
+      color: #ffd600;
+      margin-left: 8px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+    button {
+      background: #ffd600;
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    button:disabled {
+      background: #fffde4;
+      color: #bdbdbd;
+      cursor: not-allowed;
+    }
+    button:hover:not(:disabled) {
+      background: #111;
+      color: #ffd600;
+    }
+    .progress {
+      height: 6px;
+      background: #ffe066;
+      border-radius: 4px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #ffd600;
+      width: 0;
+      transition: width 0.3s;
+    }
+    @media (max-width: 700px) {
+      .container {
+        padding: 18px 6px 12px 6px;
+      }
+      .robot-photos img {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <div class="logo-text">10:01</div>
+    </div>
+    <div class="robot-photos">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=256&q=80" alt="Робот 1" />
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=facearea&w=256&q=80" alt="Робот 2" />
+    </div>
+    <h1>Анкета: Потребности в ИИ</h1>
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+    <form id="surveyForm" action="https://formsubmit.co/slavarabov421@gmail.com" method="POST">
+      <!-- Step 1 -->
+      <div class="step active" id="step1">
+        <label>Расскажите о себе</label>
+        <textarea name="about" rows="2" required></textarea>
+        <label>Название компании</label>
+        <input type="text" name="company" required />
+        <label>Сфера деятельности</label>
+        <select name="industry" required>
+          <option value="">Выберите...</option>
+          <option>IT</option>
+          <option>Торговля</option>
+          <option>Услуги</option>
+          <option>Производство</option>
+          <option>Финансы</option>
+          <option>Другое</option>
+        </select>
+        <label>Ваша роль</label>
+        <select name="role" required>
+          <option value="">Выберите...</option>
+          <option>Руководитель</option>
+          <option>Менеджер</option>
+          <option>Специалист</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <!-- Step 2 -->
+      <div class="step" id="step2">
+        <label>Что отнимает больше всего времени у вашей команды?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="painPoints" value="Обработка заявок и писем">Обработка заявок и писем</label>
+          <label><input type="checkbox" name="painPoints" value="Составление отчетов">Составление отчетов</label>
+          <label><input type="checkbox" name="painPoints" value="Поиск информации в документах">Поиск информации в документах</label>
+          <label><input type="checkbox" name="painPoints" value="Планирование и координация задач">Планирование и координация задач</label>
+          <label><input type="checkbox" name="painPoints" value="Анализ данных из Excel/таблиц">Анализ данных из Excel/таблиц</label>
+          <label><input type="checkbox" name="painPoints" value="Общение с клиентами">Общение с клиентами</label>
+          <label><input type="checkbox" name="painPoints" value="Другое">Другое</label>
+        </div>
+        <label>Какие задачи вызывают наибольшие трудности?</label>
+        <textarea name="difficulties" rows="2"></textarea>
+      </div>
+      <!-- Step 3 -->
+      <div class="step" id="step3">
+        <div class="slider-label">
+          <span>Сколько часов в день команда тратит на рутину?</span>
+          <span class="slider-value" id="sliderValue">4</span>
+        </div>
+        <input type="range" name="routineHours" min="1" max="8" value="4" id="routineSlider" />
+        <label>Есть ли у вас автоматизация?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="automation" value="Да, активно используем" required>Да, активно используем</label>
+          <label><input type="radio" name="automation" value="Частично автоматизировано">Частично автоматизировано</label>
+          <label><input type="radio" name="automation" value="Нет, все делаем вручную">Нет, все делаем вручную</label>
+          <label><input type="radio" name="automation" value="Не знаю, что можно автоматизировать">Не знаю, что можно автоматизировать</label>
+        </div>
+      </div>
+      <!-- Step 4 -->
+      <div class="step" id="step4">
+        <label>Какие задачи хотели бы автоматизировать?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="automationTasks" value="Сортировка входящих заявок">Сортировка входящих заявок</label>
+          <label><input type="checkbox" name="automationTasks" value="Генерация ответов клиентам">Генерация ответов клиентам</label>
+          <label><input type="checkbox" name="automationTasks" value="Создание презентаций и отчетов">Создание презентаций и отчетов</label>
+          <label><input type="checkbox" name="automationTasks" value="Анализ отзывов и комментариев">Анализ отзывов и комментариев</label>
+          <label><input type="checkbox" name="automationTasks" value="Поиск информации в больших документах">Поиск информации в больших документах</label>
+          <label><input type="checkbox" name="automationTasks" value="Планирование встреч и задач">Планирование встреч и задач</label>
+          <label><input type="checkbox" name="automationTasks" value="Обработка данных из разных источников">Обработка данных из разных источников</label>
+          <label><input type="checkbox" name="automationTasks" value="Другое">Другое</label>
+        </div>
+        <textarea name="otherAutomation" rows="2" placeholder="Другое..."></textarea>
+      </div>
+      <!-- Step 5 -->
+      <div class="step" id="step5">
+        <label>Готова ли команда к внедрению ИИ-решений?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="readiness" value="Да, давно ждем" required>Да, давно ждем</label>
+          <label><input type="radio" name="readiness" value="Готовы попробовать">Готовы попробовать</label>
+          <label><input type="radio" name="readiness" value="Есть сомнения, нужна консультация">Есть сомнения, нужна консультация</label>
+          <label><input type="radio" name="readiness" value="Пока не готовы">Пока не готовы</label>
+        </div>
+      </div>
+      <!-- Step 6 -->
+      <div class="step" id="step6">
+        <label>Email</label>
+        <input type="email" name="email" required />
+        <label>Телефон</label>
+        <input type="tel" name="phone" required />
+        <label>Удобное время для звонка</label>
+        <input type="text" name="callTime" placeholder="Например: 10:00-18:00" />
+      </div>
+      <input type="hidden" name="_next" value="https://10-01.am/">
+      <div class="buttons">
+        <button type="button" id="prevBtn" disabled>Назад</button>
+        <button type="button" id="nextBtn">Далее</button>
+        <button type="submit" id="submitBtn" style="display:none">Отправить</button>
+      </div>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init('wf88bnx5J_iWAho2V');
+    })();
+    const steps = document.querySelectorAll('.step');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const progressBar = document.getElementById('progressBar');
+    const slider = document.getElementById('routineSlider');
+    const sliderValue = document.getElementById('sliderValue');
+    let currentStep = 0;
+
+    function showStep(n) {
+      steps.forEach((step, i) => {
+        step.classList.toggle('active', i === n);
+      });
+      prevBtn.disabled = n === 0;
+      nextBtn.style.display = n === steps.length - 1 ? 'none' : '';
+      submitBtn.style.display = n === steps.length - 1 ? '' : 'none';
+      progressBar.style.width = ((n + 1) / steps.length * 100) + '%';
+    }
+
+    nextBtn.onclick = () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    };
+    prevBtn.onclick = () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    };
+    showStep(currentStep);
+
+    slider.oninput = function() {
+      sliderValue.textContent = this.value;
+    };
+
+    document.getElementById('surveyForm').onsubmit = function(e) {
+      e.preventDefault();
+      emailjs.sendForm('service_wco16me', 'template_rff14xn', this)
+        .then(function() {
+          showSuccess();
+        }, function(error) {
+          alert('Ошибка отправки анкеты: ' + JSON.stringify(error));
+        });
+    };
+    function showSuccess() {
+      document.querySelector('.container').innerHTML = `
+        <div class="logo"><div class="logo-text">10:01</div></div>
+        <h1 style="color:#ffd600;">Ваша анкета успешно заполнена,<br>ожидайте ответа!</h1>
+      `;
+      setTimeout(function() {
+        window.location.href = 'https://10-01.am/';
+      }, 2000);
+    }
+  </script>
+</body>
+</html> 
